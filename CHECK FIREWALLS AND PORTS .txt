@@ -1,0 +1,49 @@
+CHECK FIREWALLS AND PORTS 
+Check the firewall status:
+
+bash
+Copy code
+sudo firewall-cmd --stAllow port 22 for the default zone:
+
+ 
+Copy code
+sudo firewall-cmd --zone=public --add-port=22/tcp --permanent
+
+Reload the firewall to apply the changes:
+
+ 
+sudo firewall-cmd --reload
+ate
+Verify the port is open:
+
+bash
+Copy code
+sudo firewall-cmd --zone=public --list-ports
+3. Using iptables
+For systems using iptables, you can allow traffic on port 22 with these commands:
+
+Add a rule to accept traffic on port 22:
+
+bash
+Copy code
+sudo iptables -A INPUT -p tcp --dport 22 -j ACCEPT
+
+
+
+
+
+Enable ufw (if not already enabled):
+
+bash
+Copy code
+sudo ufw enable
+Allow port 22:
+
+bash
+Copy code
+sudo ufw allow 22/tcp
+Check the status to verify the change:
+
+bash
+Copy code
+sudo ufw status
